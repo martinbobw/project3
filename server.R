@@ -11,6 +11,10 @@ library(RColorBrewer)
 library(scales)
 library(ggplot2)
 legendTitle <- "Assaults per 100 Officers"
+plotStateTitle <- "Assault Rate By State"
+# RGB 254	217	118 hex value is ...
+palBar <- "#FED976"
+#plotStateTitle <- "Officers Assaulted by State - West"
 stateColClasses <- c("character", rep("integer", 2), rep("character", 6),
                      rep("integer", 4))
 stateAbbrNbrs <- read.csv("P3 state abbr orig.csv", stringsAsFactors = FALSE,
@@ -70,6 +74,12 @@ palSouth <- colorNumeric(palette = c("#F6EDEA", "#F3DBD3", "#F8A28C",
 palWest <- colorNumeric(palette = c("#95C4B2", "#6CB284", "#427951",
                                     "#295333", "#103A25", "#222D26"),
                          domain = usmap@data$officerAssault100)
+palWhole <- colorNumeric(palette = c("#F1EFEE", "#EFDAE0", "#DDB1C2",
+                                     "#C68AA2", "#F5AE6C", "#FAF4CC"),
+                         domain = usmap@data$RegionAssaultsPer100)
+bins <- c(10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14)
+pal <- colorBin("YlOrRd", domain = usmap@data$RegionAssaultsPer100,
+                bins = bins)
 midwestmap <- usmap[usmap@data$STATEFP %in% midwestFIPS, ]
 midwestpopup <- paste0("<b>State: ", midwestmap@data$NAME,
                        "</b><br />Assaults: ",
@@ -115,8 +125,8 @@ shinyServer(function(input, output) {
                                              aes(x = reorder(StateAbbr, -officerAssault100),
                                                  y = officerAssault100)) +
                                         geom_bar(stat = "identity", fill = "#98B499") +
-                                        ggtitle("Officers Assaulted by State - Midwest") +
-                                        xlab("State") +
+                                        ggtitle(plotStateTitle) +
+                                        xlab("") +
                                         ylab("Assaults per 100 Officers") +
                                         theme(panel.grid.major.x = element_blank(),
                                               panel.grid.major = element_line(color = "grey60"),
@@ -142,8 +152,8 @@ shinyServer(function(input, output) {
                                              aes(x = reorder(StateAbbr, -officerAssault100),
                                                  y = officerAssault100)) +
                                         geom_bar(stat = "identity", fill = "#F1E3D2") +
-                                        ggtitle("Officers Assaulted by State - Northeast") +
-                                        xlab("State") +
+                                        ggtitle(plotStateTitle) +
+                                        xlab("") +
                                         ylab("Assaults per 100 Officers") +
                                         theme(panel.grid.major.x = element_blank(),
                                               panel.grid.major = element_line(color = "grey60"),
@@ -169,8 +179,8 @@ shinyServer(function(input, output) {
                                                aes(x = reorder(StateAbbr, -officerAssault100),
                                                    y = officerAssault100)) +
                                           geom_bar(stat = "identity", fill = "#F3DBD3") +
-                                          ggtitle("Officers Assaulted by State - South") +
-                                          xlab("State") +
+                                          ggtitle(plotStateTitle) +
+                                          xlab("") +
                                           ylab("Assaults per 100 Officers") +
                                           theme(panel.grid.major.x = element_blank(),
                                                 panel.grid.major = element_line(color = "grey60"),
@@ -196,8 +206,8 @@ shinyServer(function(input, output) {
                                            aes(x = reorder(StateAbbr, -officerAssault100),
                                                y = officerAssault100)) +
                                       geom_bar(stat = "identity", fill = "#6CB284") +
-                                      ggtitle("Officers Assaulted by State - West") +
-                                      xlab("State") +
+                                      ggtitle(plotStateTitle) +
+                                      xlab("") +
                                       ylab("Assaults per 100 Officers") +
                                       theme(panel.grid.major.x = element_blank(),
                                             panel.grid.major = element_line(color = "grey60"),
@@ -222,9 +232,9 @@ shinyServer(function(input, output) {
       output$wholeBar <- renderPlot(ggplot(data = regionNumbers,
                                           aes(x = reorder(Region, -RegionAssaultsPer100),
                                               y = RegionAssaultsPer100)) +
-                                     geom_bar(stat = "identity", fill = "#6CB284") +
-                                     ggtitle("Officers Assaulted By Region") +
-                                     xlab("Region") +
+                                     geom_bar(stat = "identity", fill = palBar) +
+                                     ggtitle("Assault Rate By Region") +
+                                     xlab("") +
                                      ylab("Assaults per 100 Officers") +
                                      theme(panel.grid.major.x = element_blank(),
                                            panel.grid.major = element_line(color = "grey60"),
@@ -237,12 +247,14 @@ shinyServer(function(input, output) {
                                                  smoothFactor = 0.2, 
                                                  fillOpacity = .3, 
                                                  popup = us1popup,
+                                                 fillColor = ~pal(us1map@data$RegionAssaultsPer100))
 #                                                 color = ~binGreens(us1map@data$RegionAssaultsPer100))
-                                                 color= ~palGreens(us1map@data$RegionAssaultsPer100))
+#                                                 color= ~palWhole(us1map@data$RegionAssaultsPer100))
                                    %>% setView(-96.5, 37, zoom = 4)
                                    %>% addLegend("bottomright",
                                                  title = legendTitle,
-                                                 pal = palGreens,
+#                                                 pal = palWhole,
+                                                 pal = pal,
                                                  values = ~us1map@data$RegionAssaultsPer100,
                                                  opacity = 0.8
                                                 )

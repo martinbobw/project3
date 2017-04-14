@@ -85,8 +85,6 @@ shinyUI(pageWithSidebar(
       tabsetPanel(
         tabPanel("Introduction", value = 1, img(src = "P33_Tab_1.png", height = "600px",
                                                 width = "900px"),
-#         tabPanel("Introduction", value = 1, img(src = "/Users/robertmartin/Desktop/Northeastern/PPUA 6302 Info Design Visual Analytics/P33_Martin_R/images/P33_Tab_1.png",
-#                                                 height = "600px"),
 #        tabPanel("Introduction", value = 1, tags$iframe(src="https://www.dropbox.com/s/coqiwi49vf3layf/P33%20Tab%201.pdf?raw=1",
 #                                                        width = "900", height = "600"),
                  includeCSS(path = "www/bootstrap.css")),
