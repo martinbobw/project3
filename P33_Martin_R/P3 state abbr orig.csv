@@ -1,0 +1,57 @@
+"StateName09028","OfficersAssaulted","NbrOfOfficers","FIPSCode","State","StateName","StateAbbr","Division","Region","RegionAssaults","DivisionAssaults","RegionOfficers","DivisionOfficers"
+"ALA   ",48,6365,"01","AL","ALABAMA","AL","East South Central","South",20271,1275,146156,17778
+"ALASKA",127,592,"02","AK","ALASKA","AK","Pacific","West",12626,8848,99658,73416
+"ARIZ  ",1774,7104,"04","AZ","ARIZONA","AZ","Mountain","West",12626,3778,99658,26242
+"ARK   ",289,4324,"05","AR","ARKANSAS","AR","West South Central","South",20271,8698,146156,63184
+"CALIF ",6488,58334,"06","CA","CALIFORNIA","CA","Pacific","West",12626,8848,99658,73416
+"COLO  ",571,6720,"08","CO","COLORADO","CO","Mountain","West",12626,3778,99658,26242
+"CONN  ",704,6575,"09","CT","CONNECTICUT","CT","New England","Northeast",12211,2430,110265,23401
+"D C   ",499,3624,"11","DC","DISTRICT OF COLUMBIA","DC","South Atlantic","South",20271,10298,146156,65194
+"DEL   ",83,479,"10","DE","DELAWARE","DE","South Atlantic","South",20271,10298,146156,65194
+"FLA   ",NA,NA,"12","FL","FLORIDA","FL","South Atlantic","South",20271,10298,146156,65194
+"GA    ",682,9658,"13","GA","GEORGIA","GA","South Atlantic","South",20271,10298,146156,65194
+"HAWAII",346,2645,"15","HI","HAWAII","HI","Pacific","West",12626,8848,99658,73416
+"IDAHO ",254,1927,"16","ID","IDAHO","ID","Mountain","West",12626,3778,99658,26242
+"ILL   ",NA,NA,"17","IL","ILLINOIS","IL","East North Central","Midwest",7395,4451,71415,46492
+"IND   ",1251,6308,"18","IN","INDIANA","IN","East North Central","Midwest",7395,4451,71415,46492
+"IOWA  ",499,4187,"19","IA","IOWA","IA","West North Central","Midwest",7395,2944,71415,24923
+"KANS  ",NA,NA,"20","KS","KANSAS","KS","West North Central","Midwest",7395,2944,71415,24923
+"KY    ",164,1592,"21","KY","KENTUCKY","KY","East South Central","South",20271,1275,146156,17778
+"LA    ",2467,12404,"22","LA","LOUISIANA","LA","West South Central","South",20271,8698,146156,63184
+"MAINE ",276,1672,"23","ME","MAINE","ME","New England","Northeast",12211,2430,110265,23401
+"MASS  ",828,12770,"25","MA","MASSACHUSETTS","MA","New England","Northeast",12211,2430,110265,23401
+"MD    ",4142,12214,"24","MD","MARYLAND","MD","South Atlantic","South",20271,10298,146156,65194
+"MICH  ",389,15467,"26","MI","MICHIGAN","MI","East North Central","Midwest",7395,4451,71415,46492
+"MINN  ",141,7535,"27","MN","MINNESOTA","MN","West North Central","Midwest",7395,2944,71415,24923
+"MISS  ",323,2424,"28","MS","MISSISSIPPI","MS","East South Central","South",20271,1275,146156,17778
+"MO    ",2090,8886,"29","MO","MISSOURI","MO","West North Central","Midwest",7395,2944,71415,24923
+"MONT  ",0,528,"30","MT","MONTANA","MT","Mountain","West",12626,3778,99658,26242
+"N C   ",2664,16970,"37","NC","NORTH CAROLINA","NC","South Atlantic","South",20271,10298,146156,65194
+"N DAK ",5,874,"38","ND","NORTH DAKOTA","ND","West North Central","Midwest",7395,2944,71415,24923
+"N H   ",60,188,"33","NH","NEW HAMPSHIRE","NH","New England","Northeast",12211,2430,110265,23401
+"N J   ",3402,20604,"34","NJ","NEW JERSEY","NJ","Middle Atlantic","Northeast",12211,9781,110265,86864
+"N MEX ",608,2125,"35","NM","NEW MEXICO","NM","Mountain","West",12626,3778,99658,26242
+"N Y   ",4625,53549,"36","NY","NEW YORK","NY","Middle Atlantic","Northeast",12211,9781,110265,86864
+"NEBR  ",168,2929,"31","NE","NEBRASKA","NE","West North Central","Midwest",7395,2944,71415,24923
+"NEV   ",346,3747,"32","NV","NEVADA","NV","Mountain","West",12626,3778,99658,26242
+"OHIO  ",2212,13403,"39","OH","OHIO","OH","East North Central","Midwest",7395,4451,71415,46492
+"OKLA  ",891,5985,"40","OK","OKLAHOMA","OK","West South Central","South",20271,8698,146156,63184
+"OREG  ",527,4363,"41","OR","OREGON","OR","Pacific","West",12626,8848,99658,73416
+"PA    ",1754,12711,"42","PA","PENNSYLVANIA","PA","Middle Atlantic","Northeast",12211,9781,110265,86864
+"R I   ",562,2196,"44","RI","RHODE ISLAND","RI","New England","Northeast",12211,2430,110265,23401
+"S C   ",115,7499,"45","SC","SOUTH CAROLINA","SC","South Atlantic","South",20271,10298,146156,65194
+"S DAK ",41,512,"46","SD","SOUTH DAKOTA","SD","West North Central","Midwest",7395,2944,71415,24923
+"TENN  ",740,7397,"47","TN","TENNESSEE","TN","East South Central","South",20271,1275,146156,17778
+"TEXAS ",5051,40471,"48","TX","TEXAS","TX","West South Central","South",20271,8698,146156,63184
+"UTAH  ",166,3104,"49","UT","UTAH","UT","Mountain","West",12626,3778,99658,26242
+"VA    ",1734,12405,"51","VA","VIRGINIA","VA","South Atlantic","South",20271,10298,146156,65194
+"VT    ",NA,NA,"50","VT","VERMONT","VT","New England","Northeast",12211,2430,110265,23401
+"W VA  ",379,2345,"54","WV","WEST VIRGINIA","WV","South Atlantic","South",20271,10298,146156,65194
+"WASH  ",1360,7482,"53","WA","WASHINGTON","WA","Pacific","West",12626,8848,99658,73416
+"WIS   ",599,11314,"55","WI","WISCONSIN","WI","East North Central","Midwest",7395,4451,71415,46492
+"WYO   ",59,987,"56","WY","WYOMING","WY","Mountain","West",12626,3778,99658,26242
+"",NA,NA,"60","AS","AMERICAN SAMOA","AS","","",NA,NA,NA,NA
+"",NA,NA,"66","GU","GUAM","GU","","",NA,NA,NA,NA
+"",NA,NA,"69","MP","MARIANA ISLANDS","MP","","",NA,NA,NA,NA
+"",NA,NA,"72","PR","PUERTO RICO","PR","","",NA,NA,NA,NA
+"",NA,NA,"78","VI","VIRGIN ISLANDS","VI","","",NA,NA,NA,NA
