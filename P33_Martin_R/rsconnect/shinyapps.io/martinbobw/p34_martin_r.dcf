@@ -1,0 +1,11 @@
+name: p34_martin_r
+title: P34_Martin_R
+account: martinbobw
+server: shinyapps.io
+appId: 170257
+bundleId: 789575
+url: https://martinbobw.shinyapps.io/p34_martin_r/
+when: 1492187446.60364
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData|P3 state abbr.csv|P33_Martin_Robert 20170402.zip|P33_Martin_Robert.Rmd|ui 20170401.R|ui 20170402.R

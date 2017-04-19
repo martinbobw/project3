@@ -17,9 +17,6 @@ library(ggplot2)
 }
 legendTitle <- "Assaults per 100 Officers"
 plotStateTitle <- "Assault Rate By State"
-# RGB 254	217	118 hex value is ...
-#palBar <- "#FED976"
-#plotStateTitle <- "Officers Assaulted by State - West"
 stateColClasses <- c("character", rep("integer", 2), rep("character", 6),
                      rep("integer", 4))
 stateAbbrNbrs <- read.csv("P3 state abbr orig.csv", stringsAsFactors = FALSE,
@@ -79,24 +76,6 @@ myPalette <- colorRampPalette(c("#A0BCA6", "#93A4A9", "#868DAC", "#7A75AF",
 myPal <- colorNumeric(c("#A0BCA6", "#93A4A9", "#868DAC", "#7A75AF",
                         "#6D5DB1", "#6046B4", "#532EB7"),
                       domain = usmap@data$officerAssault100)
-#palGreens <- colorNumeric(palette = c("#C7E9C0", "#A1D99B", "#74C476", "#41AB5D",
-#                                      "#238B45", "#006D2C", "#00441B"),
-#                          domain = usmap@data$officerAssault100)
-#palMidwest <- colorNumeric(palette = c("#BACDC6", "#98B499", "#678674",
-#                                       "#4C5C58", "#3C3C68", "#8987CC"),
-#                           domain = usmap@data$officerAssault100)
-#palNortheast <- colorNumeric(palette = c("#E0E7E0", "#F1E3D2", "#FE97BE",
-#                                         "#E65B51", "#2A5F9E", "#6FB882"),
-#                           domain = usmap@data$officerAssault100)
-#palSouth <- colorNumeric(palette = c("#F6EDEA", "#F3DBD3", "#F8A28C",
-#                                     "#8F7B69", "#8FA67A", "#EDE0A6"),
-#                             domain = usmap@data$officerAssault100)
-#palWest <- colorNumeric(palette = c("#95C4B2", "#6CB284", "#427951",
-#                                    "#295333", "#103A25", "#222D26"),
-#                         domain = usmap@data$officerAssault100)
-#palWhole <- colorNumeric(palette = c("#F1EFEE", "#EFDAE0", "#DDB1C2",
-#                                     "#C68AA2", "#F5AE6C", "#FAF4CC"),
-#                         domain = usmap@data$RegionAssaultsPer100)
 bins <- c(10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14)
 pal <- colorBin("YlOrRd", domain = usmap@data$RegionAssaultsPer100,
                 bins = bins)
@@ -115,10 +94,6 @@ midwestpopup <- paste0("<b>State: ", midwestmap@data$NAME,
                        midwestmap@data$OfficersAssaulted,
                        "</b><br />Assaults Per 100 Officers: ",
                        midwestmap@data$officerAssault100)
-#                       "</b><br />Region: ",
-#                       midwestmap@data$Region,
-#                       "</b><br />Assaults per 100 Officers: ",
-#                       midwestmap@data$RegionAssaultsPer100)
 northeastmap <- usmap[usmap@data$STATEFP %in% northeastFIPS, ]
 northeastpopup <- paste0("<b>State: ", northeastmap@data$NAME,
                        "</b><br />Officers: ",
@@ -154,10 +129,6 @@ us1popup <- paste0("<b>Region: ", us1map@data$Region,
                    us1map@data$RegionAssaults,
                    "</b><br />Assaults per 100 Officers: ",
                    us1map@data$RegionAssaultsPer100)
-#binPalRdYlBu <- colorBin(palette = "RdYlBu",
-binGreens <- colorBin(palette = "Greens",
-                      domain = us1map@data$RegionAssaultsPer100,
-                      8, pretty = FALSE)
 shinyServer(function(input, output) {
 
       output$midwestBar <- renderPlot(ggplot(data = stateAbbrNbrs[stateAbbrNbrs$FIPSCode %in% midwestFIPS1, ],
@@ -217,11 +188,11 @@ shinyServer(function(input, output) {
                                               legend.position = "none") +
                                         geom_hline(yintercept = stateAbbrNbrs[stateAbbrNbrs$FIPSCode %in% northeastFIPS1,
                                                                               "RegionAssaultsPer100"], linetype = 2) +
-                                        geom_text(aes(6.5, y = stateAbbrNbrs[stateAbbrNbrs$FIPSCode %in% northeastFIPS1,
+                                        geom_text(aes(6.75, y = stateAbbrNbrs[stateAbbrNbrs$FIPSCode %in% northeastFIPS1,
                                                                            "RegionAssaultsPer100"] + 1.5,
                                                         label = paste("Average assaults = ", stateAbbrNbrs[stateAbbrNbrs$FIPSCode %in% northeastFIPS1,
                                                                                                            "RegionAssaultsPer100"]),
-                                                        vjust = 1), size = 5)
+                                                        vjust = 0.1), size = 5)
                                         )
       output$northeast <- renderLeaflet(leaflet(northeastmap) %>%
                                         addProviderTiles("CartoDB.Positron",
@@ -262,7 +233,7 @@ shinyServer(function(input, output) {
                                                                          "RegionAssaultsPer100"] + 1.5,
                                                     label = paste("Average assaults = ", stateAbbrNbrs[stateAbbrNbrs$FIPSCode %in% southFIPS1,
                                                                                                        "RegionAssaultsPer100"]),
-                                                    vjust = 1), size = 5)
+                                                    vjust = 0.25), size = 5)
                                       )
       output$south <- renderLeaflet(leaflet(southmap) %>%
                                           addProviderTiles("CartoDB.Positron",
@@ -298,7 +269,7 @@ shinyServer(function(input, output) {
                                             legend.position = "none") +
                                      geom_hline(yintercept = stateAbbrNbrs[stateAbbrNbrs$FIPSCode %in% westFIPS1,
                                                                            "RegionAssaultsPer100"], linetype = 2) +
-                                     geom_text(aes(10, y = stateAbbrNbrs[stateAbbrNbrs$FIPSCode %in% westFIPS1,
+                                     geom_text(aes(10.5, y = stateAbbrNbrs[stateAbbrNbrs$FIPSCode %in% westFIPS1,
                                                                          "RegionAssaultsPer100"] + 1.5,
                                                    label = paste("Average assaults = ", stateAbbrNbrs[stateAbbrNbrs$FIPSCode %in% westFIPS1,
                                                                                                       "RegionAssaultsPer100"]),
