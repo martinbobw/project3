@@ -1,10 +1,3 @@
-
-# This is the user-interface definition of a Shiny web application.
-# You can find out more about building applications with Shiny here:
-#
-# http://shiny.rstudio.com
-#
-
 library(shiny)
 library(leaflet)
 shinyUI(pageWithSidebar(
@@ -49,7 +42,8 @@ shinyUI(pageWithSidebar(
       conditionalPanel(condition="input.tabselected==2",
                        h4("Midwestern Region"),
                        p(),
-                       p("Click inside a state to see assault statistics"),
+                       em("Click inside a state on the map to see assault statistics.",
+                          style = "color:#532EB7"),
                        p(),
                        p(),
                        p(),
@@ -57,38 +51,47 @@ shinyUI(pageWithSidebar(
       conditionalPanel(condition="input.tabselected==3",
                        h4("Northeastern Region"),
                        p(),
-                       p("Click inside a state to see assault statistics"),
+                       em("Click inside a state on the map to see assault statistics.",
+                          style = "color:#532EB7"),
+                       p(),
+                       p(),
                        p(),
                        plotOutput("northeastBar")),
       conditionalPanel(condition="input.tabselected==4",
                        h4("Southern Region"),
-                       p("Click inside a state to see assault statistics"),
+                       em("Click inside a state on the map to see assault statistics.",
+                          style = "color:#532EB7"),
+                       p(),
                        p(),
                        p(),
                        plotOutput("southBar")),
       conditionalPanel(condition="input.tabselected==5",
                        h4("Western Region"),
-                       p("Click inside a state to see assault statistics"),
+                       em("Click inside a state on the map to see assault statistics.
+                          Zoom out or drag the map to see Alaska and Hawaii.",
+                          style = "color:#532EB7"),
                        p(),
-                       p("Pan to see Alaska and Hawaii"),
+                       p(),
+                       p(),
                        plotOutput("westBar"))
     ),
   mainPanel(
       tabsetPanel(
         tabPanel("About", value = 1, leafletOutput("wholeus",
-                                                        height = "500px"),
+                                                        height = "475px"),
                  h4("Remarks"),
                  p("Assaults with injury are 3 per 100 officers, the same
-                   rate across the four U.S. regions. Click on a region above to see
-                   assault statistics."),
+                   rate across the four U.S. regions."),
                  h4("Most Populous Cities"),
                  p("The top 10 cities in terms of population as of the 2000 U.S. Census
                    are shown above - New York, Los Angeles, Houston, Philadelphia, Phoenix,
                    San Diego, Dallas, San Antonio, Detroit, and San Jose are
                    shown above. Chicago, the third most populous city, is missing data.
                    The size of the circles correspond to the
-                   assault rate. Click on the cities to see assault details. County level
+                   assault rate. Figures for county level
                    police agencies are not included in the city figures."),
+                 em("Click on a region or city above to see assault
+                    statistics.", style = "color:blue"),
 #        tabPanel("Introduction", value = 1, img(src = "P33_Tab_1.png", height = "600px",
 #                                                width = "900px"),
 #        tabPanel("Introduction", value = 1, tags$iframe(src="https://www.dropbox.com/s/coqiwi49vf3layf/P33%20Tab%201.pdf?raw=1",

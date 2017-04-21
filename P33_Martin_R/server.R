@@ -1,8 +1,3 @@
-  # This is the server logic for a Shiny web application.
-# You can find out more about building applications with Shiny here:
-#
-# http://shiny.rstudio.com
-#
 library(leaflet)
 library(shiny)
 library(tmap)
@@ -154,16 +149,17 @@ shinyServer(function(input, output) {
                                                                                                       "RegionAssaultsPer100"]),
                                                                     vjust = 1), size = 5)
                                       )
-      output$midwest <- renderLeaflet(leaflet(midwestmap) %>%
+      output$midwest <- renderLeaflet(leaflet(midwestmap, options = leafletOptions(minZoom = 5, maxZoom = 5,
+                                                                                   zoomControl = FALSE, dragging = FALSE,
+                                                                                   doubleClickZoom = FALSE)) %>%
                                     addProviderTiles("CartoDB.Positron",
-                                                     options = providerTileOptions(minZoom = 5, maxZoom = 5,
-                                                                                   zoomControl = FALSE)) %>%
+                                                     options = providerTileOptions(opacity = 1)) %>%
                                     addPolygons(stroke=FALSE, 
                                                 smoothFactor = 0.2, 
-                                                fillOpacity = .3, 
+                                                fillOpacity = 0.7, 
                                                 popup=midwestpopup, 
                                                 color= ~myPal(midwestmap@data$officerAssault100)
-                                    )                                     %>% fitBounds(-102.5, 36.5, -79, 49.5)
+                                    )       %>% fitBounds(-102.5, 36.5, -79, 49.5)
                                 %>% addLegend("bottomright",
                                               title = legendTitle,
                                               pal = myPal,
@@ -194,13 +190,13 @@ shinyServer(function(input, output) {
                                                                                                            "RegionAssaultsPer100"]),
                                                         vjust = 0.1), size = 5)
                                         )
-      output$northeast <- renderLeaflet(leaflet(northeastmap) %>%
-                                        addProviderTiles("CartoDB.Positron",
-                                                         options = providerTileOptions(minZoom = 6, maxZoom = 6,
-                                                                                       zoomControl = FALSE)) %>%
+      output$northeast <- renderLeaflet(leaflet(northeastmap, options = leafletOptions(minZoom = 6, maxZoom = 6,
+                                                                                       zoomControl = FALSE, dragging = FALSE,
+                                                                                       doubleClickZoom = FALSE)) %>%
+                                        addProviderTiles("CartoDB.Positron") %>%
                                         addPolygons(stroke=FALSE, 
                                                     smoothFactor = 0.2, 
-                                                    fillOpacity = .3, 
+                                                    fillOpacity = 0.7, 
                                                     popup=northeastpopup, 
                                                     color= ~myPal(northeastmap@data$officerAssault100))
 #                                        %>% fitBounds(-81, 39, -67, 48)
@@ -235,13 +231,13 @@ shinyServer(function(input, output) {
                                                                                                        "RegionAssaultsPer100"]),
                                                     vjust = 0.25), size = 5)
                                       )
-      output$south <- renderLeaflet(leaflet(southmap) %>%
-                                          addProviderTiles("CartoDB.Positron",
-                                                           options = providerTileOptions(minZoom = 5, maxZoom = 5,
-                                                                                         zoomControl = FALSE)) %>%
+      output$south <- renderLeaflet(leaflet(southmap, options = leafletOptions(minZoom = 5, maxZoom = 5,
+                                                                               zoomControl = FALSE, dragging = FALSE,
+                                                                               doubleClickZoom = FALSE)) %>%
+                                          addProviderTiles("CartoDB.Positron") %>%
                                           addPolygons(stroke=FALSE, 
                                                       smoothFactor = 0.2, 
-                                                      fillOpacity = .3, 
+                                                      fillOpacity = 0.7, 
                                                       popup=southpopup, 
                                                       color= ~myPal(southmap@data$officerAssault100))
                                         %>% fitBounds(-107, 24, -75, 40)
@@ -275,13 +271,13 @@ shinyServer(function(input, output) {
                                                                                                       "RegionAssaultsPer100"]),
                                                    vjust = 1), size = 5)
                                      )
-      output$west <- renderLeaflet(leaflet(westmap) %>%
-                                      addProviderTiles("CartoDB.Positron",
-                                                       options = providerTileOptions(minZoom = 5, maxZoom = 5,
-                                                                                     zoomControl = FALSE)) %>%
+      output$west <- renderLeaflet(leaflet(westmap, options = leafletOptions(minZoom = 3, maxZoom = 5,
+                                                                             doubleClickZoom = FALSE)) %>%
+#                                                                             zoomControl = FALSE)) %>%
+                                      addProviderTiles("CartoDB.Positron") %>%
                                       addPolygons(stroke=FALSE, 
                                                   smoothFactor = 0.2, 
-                                                  fillOpacity = .3, 
+                                                  fillOpacity = 0.7, 
                                                   popup=westpopup, 
                                                   color= ~myPal(westmap@data$officerAssault100))
 #                                     %>% fitBounds(-125, 30, -102, 49)
@@ -293,28 +289,16 @@ shinyServer(function(input, output) {
                                                   opacity = 0.8
                                     )
       )
-#      output$wholeBar <- renderPlot(ggplot(data = regionNumbers,
-#                                          aes(x = reorder(Region, -RegionAssaultsPer100),
-#                                              y = RegionAssaultsPer100)) +
-#                                     geom_bar(stat = "identity", fill = palBar) +
-#                                     ggtitle("Assault Rate By Region") +
-#                                     xlab("") +
-#                                     ylab("Assaults per 100 Officers") +
-#                                     theme(panel.grid.major.x = element_blank(),
-#                                           panel.grid.major = element_line(color = "grey60"),
-#                                           panel.grid.minor = element_line(color = "grey40"),
-#                                           panel.background = element_rect(fill = "white"),
-#                                           axis.ticks = element_blank()))
-      output$wholeus <- renderLeaflet(leaflet(us1map) %>%
-                                     addProviderTiles("CartoDB.Positron",
-                                                      options = providerTileOptions(zoomControl = FALSE,
-                                                                minZoom = 4, maxZoom = 4)) %>%
+      output$wholeus <- renderLeaflet(leaflet(us1map, options = leafletOptions(minZoom = 4, maxZoom = 4,
+                                                                               zoomControl = FALSE, dragging = FALSE,
+                                                                               doubleClickZoom = FALSE)) %>%
+                                     addProviderTiles("CartoDB.Positron") %>%
                                      addPolygons(stroke = FALSE, 
                                                  smoothFactor = 0.2, 
-                                                 fillOpacity = .3, 
+                                                 fillOpacity = .55, # was 0.3
                                                  popup = us1popup,
                                                  fillColor = ~pal(us1map@data$RegionAssaultsPer100))
-                               %>%   addCircleMarkers(lng = ~top10Cities$Lon,
+                               %>% addCircleMarkers(lng = ~top10Cities$Lon,
                                                  lat = ~top10Cities$Lat,
                                                  radius = ~top10Cities$AssaultsPer100,
                                                  color = "red",
@@ -322,20 +306,13 @@ shinyServer(function(input, output) {
                                                  stroke = TRUE,
                                                  fillOpacity = 0.2,
                                                  popup = ~top10popup) 
-#                                                 color = ~binGreens(us1map@data$RegionAssaultsPer100))
-#                                                 color= ~palWhole(us1map@data$RegionAssaultsPer100))
-                                   %>% setView(-96.5, 37, zoom = 4)
-                                   %>% addLegend("bottomright",
-                                                 title = legendTitle,
-#                                                 pal = palWhole,
-                                                 pal = pal,
-                                                 values = ~us1map@data$RegionAssaultsPer100,
-                                                 opacity = 0.8
-                                                )
+                               %>% setView(-96.5, 37, zoom = 4)
+                               %>% addLegend("bottomright",
+                                             title = legendTitle,
+                                             pal = pal,
+                                             values = ~us1map@data$RegionAssaultsPer100,
+                                             opacity = 0.8
+                                            )
       )
-#  output$conclusion <- renderImage({
-#    filename <- normalizePath(file.path('./images', "MapOfBostonBPD.png"))
-#    list(src = filename)
-#  }, deleteFile = FALSE)
 
 })
