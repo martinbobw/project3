@@ -658,12 +658,10 @@ westFIPS1 <- c("02", "04", "06", "08", "15", "16", "30", "32", "35", "41",
 # some testing and EDA
 # This file that is being read in below is actually created earlier in the
 # program through interim data frames then finally put together starting 
-# around line 287, and used in subsequent R files - including server.R
+# around line 367, and used in subsequent R files - including server.R
 # with Shiny
-#stateColClasses <- c(rep("character", 7), rep("integer", 7), rep("numeric", 2))
 stateColClasses <- c("character", rep("integer", 2), rep("character", 6),
                      rep("integer", 4))
-#stateAbbrNbrs <- read.csv("P3 state abbr.csv", stringsAsFactors = FALSE,
 stateAbbrNbrs <- read.csv("P3 state abbr orig.csv", stringsAsFactors = FALSE,
                           colClasses = stateColClasses)
 stateAbbrNbrs$officers100 <- stateAbbrNbrs$NbrOfOfficers / 100
