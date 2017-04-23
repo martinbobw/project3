@@ -31,7 +31,8 @@ shinyUI(pageWithSidebar(
                          remove police agencies that did not report the number
                          of officers or that did not report full year assaults.
                          Assaults were then summarized at the state and 
-                         regional levels."),
+                         regional levels. The remaining agency data covers 71% of the
+                         total U.S. population in 1997."),
                        h4("Results"),
                        p(),
                        p("Through statistical analysis, the four regions'
